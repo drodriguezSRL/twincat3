@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Ejemplo práctico - MkLorum</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Ejemplo pr\u00e1ctico";
+        var mkdocs_page_input_path = "ejemplo.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> MkLorum
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../instalacion/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../estandar/">Estándar IEC 61131-3</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../sfc/">Qué es el SFC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../twincat0/">Creación de un proyecto en TwinCAT3</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Ejemplo práctico</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#diagrama-sfc-resultante">Diagrama SFC resultante</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#declaracion-de-variables-del-fb_semaforo">Declaración de variables del FB_Semaforo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#acciones-de-cada-etapa">Acciones de cada etapa</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#condiciones-de-transicion">Condiciones de transición</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#instanciar-el-function-block-en-main">Instanciar el Function Block en MAIN</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../compilacion/">Compilación, descarga y modo Online</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../online/">Depuración en modo Online</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../errores/">Buenas prácticas y errores comunes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ejercicios/">Ejercicios propuestos</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../referencias/">Referencias y recursos adicionales</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../atajos/">Anexo A — Resumen de atajos de teclado en TwinCAT XAE</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../estructura/">Anexo B — Estructura mínima de un proyecto SFC en TwinCAT 3</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">MkLorum</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Ejemplo práctico</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="ejemplo-practico-semaforo-secuencial">Ejemplo práctico: Semáforo secuencial</h2>
+<p>En este ejemplo programaremos un semáforo simple con tres luces (rojo, ámbar, verde) con los siguientes tiempos:</p>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Luz</th>
+<th>Duración</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>🔴 Rojo</td>
+<td>5 segundos</td>
+</tr>
+<tr>
+<td>2</td>
+<td>🟡 Ámbar</td>
+<td>2 segundos</td>
+</tr>
+<tr>
+<td>3</td>
+<td>🟢 Verde</td>
+<td>5 segundos</td>
+</tr>
+<tr>
+<td>4</td>
+<td>🟡 Ámbar</td>
+<td>2 segundos</td>
+</tr>
+<tr>
+<td>→ vuelta al paso 1</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="diagrama-sfc-resultante">Diagrama SFC resultante</h3>
+<pre><code>         [Init]          ← Etapa inicial (doble borde)
+            │
+         [bStart]        ← Transición: espera señal de inicio
+            │
+       [Step_Rojo]       ← Enciende luz roja
+            │
+   [tTempRojo.Q / 5s]    ← Transición: espera 5 segundos
+            │
+      [Step_Ambar1]      ← Enciende luz ámbar
+            │
+   [tTempAmbar.Q / 2s]   ← Transición: espera 2 segundos
+            │
+      [Step_Verde]       ← Enciende luz verde
+            │
+   [tTempVerde.Q / 5s]   ← Transición: espera 5 segundos
+            │
+      [Step_Ambar2]      ← Enciende luz ámbar
+            │
+   [tTempAmbar2.Q / 2s]  ← Transición: espera 2 segundos
+            │
+         [Jump]          ← Salto de vuelta a Step_Rojo
+</code></pre>
+<h3 id="declaracion-de-variables-del-fb_semaforo">Declaración de variables del FB_Semaforo</h3>
+<pre><code class="language-pascal">FUNCTION_BLOCK FB_Semaforo
+VAR_INPUT
+    bStart  : BOOL;
+    bReset  : BOOL;
+END_VAR
+VAR_OUTPUT
+    bRojo   : BOOL;
+    bAmbar  : BOOL;
+    bVerde  : BOOL;
+END_VAR
+VAR
+    tRojo    : TON;
+    tAmbar1  : TON;
+    tVerde   : TON;
+    tAmbar2  : TON;
+    SFCInit  : BOOL;   (* Flag de reset del SFC *)
+END_VAR
+</code></pre>
+<h3 id="acciones-de-cada-etapa">Acciones de cada etapa</h3>
+<p><strong>Entry action de <code>Step_Rojo</code></strong> (se ejecuta una sola vez al entrar):</p>
+<pre><code class="language-pascal">bRojo  := TRUE;
+bAmbar := FALSE;
+bVerde := FALSE;
+tRojo(IN := FALSE, PT := T#5S);
+tRojo(IN := TRUE,  PT := T#5S);
+</code></pre>
+<p><strong>Entry action de <code>Step_Ambar1</code></strong>:</p>
+<pre><code class="language-pascal">bRojo  := FALSE;
+bAmbar := TRUE;
+bVerde := FALSE;
+tAmbar1(IN := FALSE, PT := T#2S);
+tAmbar1(IN := TRUE,  PT := T#2S);
+</code></pre>
+<p><strong>Entry action de <code>Step_Verde</code></strong>:</p>
+<pre><code class="language-pascal">bRojo  := FALSE;
+bAmbar := FALSE;
+bVerde := TRUE;
+tVerde(IN := FALSE, PT := T#5S);
+tVerde(IN := TRUE,  PT := T#5S);
+</code></pre>
+<p><strong>Entry action de <code>Step_Ambar2</code></strong>:</p>
+<pre><code class="language-pascal">bRojo  := FALSE;
+bAmbar := TRUE;
+bVerde := FALSE;
+tAmbar2(IN := FALSE, PT := T#2S);
+tAmbar2(IN := TRUE,  PT := T#2S);
+</code></pre>
+<h3 id="condiciones-de-transicion">Condiciones de transición</h3>
+<table>
+<thead>
+<tr>
+<th>Transición</th>
+<th>Condición</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Init → Step_Rojo</td>
+<td><code>bStart</code></td>
+</tr>
+<tr>
+<td>Step_Rojo → Step_Ambar1</td>
+<td><code>tRojo.Q</code></td>
+</tr>
+<tr>
+<td>Step_Ambar1 → Step_Verde</td>
+<td><code>tAmbar1.Q</code></td>
+</tr>
+<tr>
+<td>Step_Verde → Step_Ambar2</td>
+<td><code>tVerde.Q</code></td>
+</tr>
+<tr>
+<td>Step_Ambar2 → (jump) Step_Rojo</td>
+<td><code>tAmbar2.Q</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="instanciar-el-function-block-en-main">Instanciar el Function Block en MAIN</h3>
+<p>Abre el POU <strong>MAIN</strong> (lenguaje ST) y escribe:</p>
+<pre><code class="language-pascal">PROGRAM MAIN
+VAR
+    instSemaforo : FB_Semaforo;
+END_VAR
+
+(* Gestión del reset *)
+instSemaforo.bReset := GVL_IO.bReset;
+instSemaforo.SFCInit := GVL_IO.bReset;
+
+(* Señal de inicio *)
+instSemaforo.bStart := GVL_IO.bStart;
+
+(* Llamada al Function Block *)
+instSemaforo();
+
+(* Mapear salidas *)
+GVL_IO.bRojo  := instSemaforo.bRojo;
+GVL_IO.bAmbar := instSemaforo.bAmbar;
+GVL_IO.bVerde := instSemaforo.bVerde;
+</code></pre>
+<blockquote>
+<p><code>[CAPTURA SUGERIDA: Diagrama SFC completo del semáforo en el editor de TwinCAT, con los cuatro pasos visibles y los saltos de retorno]</code></p>
+</blockquote>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../twincat0/" class="btn btn-neutral float-left" title="Creación de un proyecto en TwinCAT3"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../compilacion/" class="btn btn-neutral float-right" title="Compilación, descarga y modo Online">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../twincat0/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../compilacion/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Qué es el SFC - MkLorum</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Qu\u00e9 es el SFC";
+        var mkdocs_page_input_path = "sfc.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> MkLorum
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../instalacion/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../estandar/">Estándar IEC 61131-3</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Qué es el SFC</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#cuando-usar-sfc">¿Cuándo usar SFC?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cuando-no-usar-sfc">¿Cuándo NO usar SFC?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#elementos-fundamentales-del-sfc">Elementos fundamentales del SFC</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#etapa-step">Etapa (Step)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#transicion-transition">Transición (Transition)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#arco-dirigido-arc-link">Arco dirigido (Arc / Link)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#salto-jump">Salto (Jump)</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../twincat0/">Creación de un proyecto en TwinCAT3</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ejemplo/">Ejemplo práctico</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../compilacion/">Compilación, descarga y modo Online</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../online/">Depuración en modo Online</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../errores/">Buenas prácticas y errores comunes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ejercicios/">Ejercicios propuestos</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../referencias/">Referencias y recursos adicionales</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../atajos/">Anexo A — Resumen de atajos de teclado en TwinCAT XAE</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../estructura/">Anexo B — Estructura mínima de un proyecto SFC en TwinCAT 3</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">MkLorum</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Qué es el SFC</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="que-es-el-sfc-sequential-function-chart">¿Qué es el SFC (Sequential Function Chart)?</h2>
+<p>El <strong>SFC</strong> (en español, <em>Diagrama Funcional Secuencial</em>, también conocido como <strong>Grafcet</strong> según la norma francesa que le dio origen) es un lenguaje gráfico diseñado específicamente para describir <strong>secuencias de operaciones</strong>. Es el lenguaje más natural cuando un proceso puede dividirse en <strong>estados discretos</strong> bien definidos con condiciones de cambio entre ellos.</p>
+<h3 id="cuando-usar-sfc">¿Cuándo usar SFC?</h3>
+<p>Usa SFC cuando el proceso que deseas automatizar se puede describir como una sucesión ordenada de pasos. Ejemplos típicos:</p>
+<ul>
+<li>Ciclos de llenado/vaciado de depósitos.</li>
+<li>Líneas de montaje con fases diferenciadas.</li>
+<li>Secuencias de arranque/parada de máquinas.</li>
+<li>Control de semáforos o señales luminosas.</li>
+<li>Brazos robóticos con movimientos secuenciales.</li>
+</ul>
+<blockquote>
+<p>💡<strong>Regla de oro:</strong> si puedes describir tu proceso con frases como <em>"primero haz A, luego espera a que ocurra X, después haz B…"</em>, el SFC es tu lenguaje.</p>
+</blockquote>
+<h3 id="cuando-no-usar-sfc">¿Cuándo NO usar SFC?</h3>
+<ul>
+<li>Para lógica puramente combinacional (sin estados): usa FBD o ST.</li>
+<li>Para algoritmos de decisión complejos sin sentido de "estado de programa": usa ST.</li>
+<li>Evita usar el SFC como diagrama de decisión ramificado; esto genera diagramas complejos y con mal rendimiento.</li>
+</ul>
+<blockquote>
+<p>ℹ️ La <strong>lógica combinacional y secuencial</strong> son los dos pilares del diseño digital. Los circuitos combinacionales generan salidas basadas únicamente en las entradas actuales, sin memoria (e.g., sumadores). En contraste, los circuitos secuenciales utilizan memoria (biestables) para que la salida dependa de las entradas actuales y estados anteriores, con retroalimentación (e.g., contadores).</p>
+</blockquote>
+<h3 id="elementos-fundamentales-del-sfc">Elementos fundamentales del SFC</h3>
+<p>Un programa SFC está compuesto por cuatro tipos de elementos gráficos básicos:</p>
+<h4 id="etapa-step">Etapa (Step)</h4>
+<p>Representa un <strong>estado estable</strong> del sistema. En cada instante, una o varias etapas están activas.</p>
+<pre><code>┌─────────┐
+│  Etapa  │   ← Nombre de la etapa (e.g., motorOFF)
+└─────────┘
+</code></pre>
+<ul>
+<li>Cada etapa tiene un nombre único.</li>
+<li>La <strong>etapa inicial</strong> se representa con <strong>doble borde</strong> y es la que está activa al arrancar el programa.</li>
+<li>Una etapa puede tener acciones asociadas que se ejecutan mientras dicha etapa está activa.</li>
+</ul>
+<p><img alt="Etapa inicial y transiciones" src="/docs/img/etapa_inicial.png" /></p>
+<h4 id="transicion-transition">Transición (Transition)</h4>
+<p>Representa la <strong>condición de cambio</strong> entre dos etapas. Es una expresión booleana; cuando se evalúa como <code>TRUE</code> y la etapa anterior está activa, el flujo avanza a la siguiente etapa.</p>
+<pre><code>────┤ condición ├────
+</code></pre>
+<ul>
+<li>La condición puede ser una variable booleana, una expresión lógica o simplemente <code>TRUE</code> (avance inmediato).</li>
+<li>Se programa en ST, LD o FBD.</li>
+</ul>
+<h4 id="arco-dirigido-arc-link">Arco dirigido (Arc / Link)</h4>
+<p>Línea vertical u horizontal que conecta etapas con transiciones, indicando la dirección del flujo.</p>
+<h4 id="salto-jump">Salto (Jump)</h4>
+<p>Permite crear <strong>bucles</strong> o saltar a una etapa no adyacente sin dibujar un arco largo. Se representa como una flecha con el nombre de la etapa destino. Es muy usado para reiniciar el ciclo volviendo a la etapa inicial.</p>
+<pre><code>   ↓
+┌───────┐
+│  Init │  ← salto de vuelta al inicio
+└───────┘
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../estandar/" class="btn btn-neutral float-left" title="Estándar IEC 61131-3"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../twincat0/" class="btn btn-neutral float-right" title="Creación de un proyecto en TwinCAT3">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../estandar/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../twincat0/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

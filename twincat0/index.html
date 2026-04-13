@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Creación de un proyecto en TwinCAT3 - MkLorum</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Creaci\u00f3n de un proyecto en TwinCAT3";
+        var mkdocs_page_input_path = "twincat0.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> MkLorum
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../instalacion/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../estandar/">Estándar IEC 61131-3</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../sfc/">Qué es el SFC</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Creación de un proyecto en TwinCAT3</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#abrir-twincat-xae-y-crear-un-nuevo-proyecto">Abrir TwinCAT XAE y crear un nuevo proyecto</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#estructura-del-proyecto">Estructura del proyecto</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#anadir-un-proyecto-plc">Añadir un proyecto PLC</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#declarar-variables-globales-gvl">Declarar variables globales (GVL)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#creacion-de-un-pou-en-sfc">Creación de un POU en SFC</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#anadir-un-nuevo-pou-con-lenguaje-sfc">Añadir un nuevo POU con lenguaje SFC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#interfaz-del-editor-sfc">Interfaz del editor SFC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#declarar-variables-locales-del-progama">Declarar variables locales del progama</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#programacion-de-pasos-y-transiciones">Programación de pasos y transiciones</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#insertar-pasos-y-transiciones">Insertar pasos y transiciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#renombrar-pasos-y-transiciones">Renombrar pasos y transiciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#programar-una-transicion">Programar una transición</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#crear-un-bucle-de-retorno-jump">Crear un bucle de retorno (Jump)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#acciones-tipos-y-calificadores">Acciones: tipos y calificadores</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#anadir-una-accion-a-una-etapa">Añadir una acción a una etapa</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#calificadores-de-accion-action-qualifiers">Calificadores de acción (Action Qualifiers)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ramificaciones-alternativas-y-paralelas">Ramificaciones: alternativas y paralelas</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#ramificacion-alternativa-alternative-branch">Ramificación alternativa (Alternative Branch)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#ramificacion-paralela-parallel-branch">Ramificación paralela (Parallel Branch)</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#variables-de-control-del-sfc-sfc-flags">Variables de control del SFC (SFC Flags)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ejemplo-de-uso-de-sfcinit-para-reset">Ejemplo de uso de SFCInit para reset</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ejemplo/">Ejemplo práctico</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../compilacion/">Compilación, descarga y modo Online</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../online/">Depuración en modo Online</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../errores/">Buenas prácticas y errores comunes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ejercicios/">Ejercicios propuestos</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../referencias/">Referencias y recursos adicionales</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../atajos/">Anexo A — Resumen de atajos de teclado en TwinCAT XAE</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../estructura/">Anexo B — Estructura mínima de un proyecto SFC en TwinCAT 3</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">MkLorum</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Creación de un proyecto en TwinCAT3</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="creacion-de-un-proyecto-twincat-3-desde-cero">Creación de un proyecto TwinCAT 3 desde cero</h2>
+<h3 id="abrir-twincat-xae-y-crear-un-nuevo-proyecto">Abrir TwinCAT XAE y crear un nuevo proyecto</h3>
+<ol>
+<li>Abre <strong>TwinCAT XAE Shell</strong> (o Visual Studio).</li>
+<li>Ve a <strong>File → New → Project…</strong></li>
+<li>En el buscador de plantillas escribe <code>TwinCAT</code> y selecciona <strong>TwinCAT XAE Project</strong>.</li>
+<li>Asigna un nombre descriptivo al proyecto (p. ej. <code>PLC_SFC_Semaforo</code>) y elige la carpeta de destino.</li>
+<li>Haz clic en <strong>OK/Create</strong>.</li>
+</ol>
+<p><img alt="TwinCAT Nuevo Proyecto" src="/docs/img/twinCAT_newproject.png" /></p>
+<h3 id="estructura-del-proyecto">Estructura del proyecto</h3>
+<p>Tras crearlo, el <strong>Solution Explorer</strong> mostrará la siguiente estructura:</p>
+<pre><code>📁 Solución
+└── 📁 TwinCAT Project
+    ├── 📁 SYSTEM          ← Configuración del sistema (tareas, tiempo real, rutas ADS) y licencias
+    ├── 📁 MOTION          ← Control de movimiento (vincularse con actuadores y accionadores)
+    ├── 📁 PLC             ← Proyectos PLC (aquí programamos)
+    ├── 📁 SAFETY          ← Módulos de seguridad
+    └── 📁 I/O             ← Configuración de hardware y E/S
+</code></pre>
+<h3 id="anadir-un-proyecto-plc">Añadir un proyecto PLC</h3>
+<ol>
+<li>En el Solution Explorer, haz clic derecho sobre <strong>PLC</strong> → <strong>Add New Item…</strong></li>
+<li>Selecciona la plantilla <strong>Standard PLC Project</strong>.</li>
+<li>Ponle un nombre (p. ej. <code>PLC_Semaforo</code>) y haz clic en <strong>Add</strong>.</li>
+</ol>
+<p>Se creará automáticamente la estructura del proyecto PLC:</p>
+<pre><code>📁 PLC_Semaforo
+├── 📁 References         ← Librerías referenciadas
+├── 📁 DUTs               ← Tipos de datos definidos por el usuario (Data Unit Types)
+├── 📁 GVLs               ← Listas de variables globales (Global Variable Lists)
+├── 📁 POUs               ← Unidades de programación (Program Organization Units)
+│   └── MAIN (PRG)        ← Programa principal (creado por defecto en ST)
+├── 📁 VISUs              ← Visualizaciones HMI
+└── 📁 TASK CONFIGURATION ← Configuración de tareas
+</code></pre>
+<p><img alt="Solution Explorer" src="/docs/img/solution_explorer.png" /></p>
+<h3 id="declarar-variables-globales-gvl">Declarar variables globales (GVL)</h3>
+<p>Las <strong>GVLs</strong> (Global Variable Lists) permiten declarar variables accesibles desde cualquier POU del proyecto. Para nuestro ejemplo de semáforo crearemos una GVL con las salidas:</p>
+<ol>
+<li>Clic derecho sobre <strong>GVLs</strong> → <strong>Add → Global Variable List…</strong></li>
+<li>Nómbrala <code>GVL_IO</code>.</li>
+<li>Declara las variables:</li>
+</ol>
+<pre><code class="language-pascal">VAR_GLOBAL
+    bRojo    : BOOL;   (* Luz roja del semáforo *)
+    bAmbar   : BOOL;   (* Luz ámbar del semáforo *)
+    bVerde   : BOOL;   (* Luz verde del semáforo *)
+    bReset   : BOOL;   (* Señal de reset del sistema *)
+END_VAR
+</code></pre>
+<blockquote>
+<p>💡 El uso de variables globales no es imprescindible para la realización de las prácticas de la asignatura de Automatización Industrial. Ver uso de variables locales en <a href="#creación-de-un-pou-en-sfc">Creación de un POU en SFC</a>.</p>
+<p>ℹ️  La principal diferencia entre las <strong>variables globales y locales</strong> radica en su alcance, duración y lugar de declaración, afectando a cómo los datos se comparten entre diferentes bloques de programa o POUs y tareas. Las variables globales definidas dentro de un GVL son visibles y accesibles desde cualquier parte del proyecto, mientras que las variables globales se declaran dentro de un bloque de código específico (POU)  y únivamente son visibles y accesibles desde dentro de ese POU.  </p>
+</blockquote>
+<h3 id="creacion-de-un-pou-en-sfc">Creación de un POU en SFC</h3>
+<h4 id="anadir-un-nuevo-pou-con-lenguaje-sfc">Añadir un nuevo POU con lenguaje SFC</h4>
+<ol>
+<li>Clic derecho sobre la carpeta <strong>POUs</strong> → <strong>Add</strong> → <strong>POU…</strong></li>
+<li>En el diálogo:</li>
+<li><strong>Name</strong>: <code>FB_Semaforo</code></li>
+<li><strong>Type</strong>: <code>Program</code></li>
+<li><strong>Implementation language</strong>: <code>Sequential Function Chart (SFC)</code></li>
+<li>Haz clic en <strong>Open</strong>.</li>
+</ol>
+<p><img alt="POU" src="/docs/img/pou.png" /></p>
+<p><img alt="New SFC POU" src="/docs/img/new_POU.png" /></p>
+<p>TwinCAT creará el POU y abrirá el <strong>editor SFC</strong> mostrando una estructura inicial con:</p>
+<ul>
+<li>La etapa inicial <strong>Init</strong> (con doble borde).</li>
+<li>Una transición debajo de Init.</li>
+<li>Una etapa <strong>Step0</strong> y otra transición <strong>Trans0</strong>.</li>
+</ul>
+<h4 id="interfaz-del-editor-sfc">Interfaz del editor SFC</h4>
+<p>El editor SFC en TwinCAT se divide en dos zonas:</p>
+<ul>
+<li><strong>Zona superior (Declaration)</strong>: declaración de <strong>variables locales</strong> del POU, igual que en cualquier otro lenguaje.</li>
+<li><strong>Zona inferior (Implementation)</strong>: el diagrama SFC propiamente dicho.</li>
+</ul>
+<p>En la barra de menús aparece el menú contextual <strong>SFC</strong> con todas las operaciones de inserción y modificación de elementos.</p>
+<p><img alt="Editor POU" src="/docs/img/editor.png" /></p>
+<h4 id="declarar-variables-locales-del-progama">Declarar variables locales del progama</h4>
+<p>En la zona de declaración del <code>FB_Semaforo</code>, añade las variables que necesitarás:</p>
+<pre><code class="language-pascal">FUNCTION_BLOCK FB_Semaforo
+VAR
+    // entradas
+    bStart   : BOOL;   // Señal de inicio
+    bReset   : BOOL;   // Señal de reset 
+    bRojo    : BOOL;   // Salida luz roja
+
+    // salidas 
+    bAmbar   : BOOL;   // Luz ambar
+    bVerde   : BOOL;   // Luz verde
+
+    // temporizadores y contadores
+    tEspera       : TIME := T#5S; // Tiempo de espera por defecto
+END_VAR
+</code></pre>
+<h3 id="programacion-de-pasos-y-transiciones">Programación de pasos y transiciones</h3>
+<h4 id="insertar-pasos-y-transiciones">Insertar pasos y transiciones</h4>
+<p>Para añadir elementos al diagrama SFC, selecciona un elemento existente y usa el menú <strong>SFC</strong> de herramientas (<em>Toolbox</em>) situado en la ventana derecha o el menú contextual (clic derecho):</p>
+<ul>
+<li><strong>Insert step-transition after</strong>: añade una etapa y una transición después del elemento seleccionado.</li>
+<li><strong>Insert step-transition before</strong>: añade antes.</li>
+<li>También puedes arrastrar elementos desde el panel <strong>Toolbox</strong>.</li>
+</ul>
+<p><img alt="Toolbox SFC" src="/docs/img/toolbox.png" /></p>
+<h4 id="renombrar-pasos-y-transiciones">Renombrar pasos y transiciones</h4>
+<p>Haz doble clic sobre el nombre de una etapa o transición para editarlo. Es importante usar nombres descriptivos:</p>
+<table>
+<thead>
+<tr>
+<th>Nombre genérico</th>
+<th>Nombre descriptivo sugerido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Step0</td>
+<td>Step_Rojo</td>
+</tr>
+<tr>
+<td>Step1</td>
+<td>Step_Verde</td>
+</tr>
+<tr>
+<td>Step2</td>
+<td>Step_Ambar</td>
+</tr>
+<tr>
+<td>Trans0</td>
+<td>Trans_InicioRojo</td>
+</tr>
+<tr>
+<td>Trans1</td>
+<td>Trans_RojoAVerde</td>
+</tr>
+</tbody>
+</table>
+<h4 id="programar-una-transicion">Programar una transición</h4>
+<p>Las transiciones contienen una condición booleana. Para editarla:</p>
+<ol>
+<li>Haz doble clic sobre la transición (en la línea horizontal que la representa).</li>
+<li>Se abre el editor de la condición (por defecto en ST).</li>
+<li>Escribe la expresión booleana. Ejemplos:</li>
+</ol>
+<pre><code class="language-pascal">(* Transición que avanza al cabo de 5 segundos *)
+tTemporizador.Q
+
+(* Transición que avanza inmediatamente *)
+TRUE
+
+(* Transición que espera una señal de entrada *)
+bStart
+
+(* Transición compuesta *)
+bStart AND NOT bReset
+</code></pre>
+<h4 id="crear-un-bucle-de-retorno-jump">Crear un bucle de retorno (Jump)</h4>
+<p>Para que la secuencia se repita indefinidamente, necesitas un <strong>salto</strong> al final del diagrama que apunte de vuelta a la etapa inicial o al primer paso del ciclo.</p>
+<ol>
+<li>Selecciona la última transición del diagrama.</li>
+<li>En el menú SFC, selecciona <strong>Insert jump</strong>.</li>
+<li>Escribe el nombre de la etapa destino (p. ej. <code>Step_Rojo</code>).</li>
+</ol>
+<h3 id="acciones-tipos-y-calificadores">Acciones: tipos y calificadores</h3>
+<p>Una <strong>acción</strong> es el código que se ejecuta asociado a una etapa. Cada etapa puede tener múltiples acciones. En TwinCAT 3 existen tres tipos de acciones por momento de ejecución:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Descripción</th>
+<th>Marcador visual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Entry action</strong></td>
+<td>Se ejecuta <strong>una sola vez</strong> al entrar en la etapa.</td>
+<td><code>E</code> en la esquina superior</td>
+</tr>
+<tr>
+<td><strong>Step action</strong></td>
+<td>Se ejecuta <strong>en cada ciclo</strong> mientras la etapa está activa.</td>
+<td>Triángulo negro en la esquina</td>
+</tr>
+<tr>
+<td><strong>Exit action</strong></td>
+<td>Se ejecuta <strong>una sola vez</strong> justo antes de abandonar la etapa.</td>
+<td><code>X</code> en la esquina inferior</td>
+</tr>
+</tbody>
+</table>
+<h4 id="anadir-una-accion-a-una-etapa">Añadir una acción a una etapa</h4>
+<ol>
+<li>Haz clic derecho sobre la etapa → <strong>Add action…</strong></li>
+<li>Elige el tipo (Entry, Step o Exit).</li>
+<li>Ponle un nombre descriptivo (p. ej. <code>Step_Rojo_entry</code>).</li>
+<li>Selecciona el lenguaje de implementación (normalmente <strong>Structured Text</strong>).</li>
+<li>Escribe el código de la acción.</li>
+</ol>
+<p>Ejemplo de <strong>Entry action</strong> para encender la luz roja y apagar las demás:</p>
+<pre><code class="language-pascal">(* Step_Rojo_entry *)
+bRojo   := TRUE;
+bAmbar  := FALSE;
+bVerde  := FALSE;
+
+(* Arrancar temporizador de 5 segundos *)
+tTemporizador(IN := FALSE, PT := T#5S);
+tTemporizador(IN := TRUE,  PT := T#5S);
+</code></pre>
+<h4 id="calificadores-de-accion-action-qualifiers">Calificadores de acción (Action Qualifiers)</h4>
+<p>Cuando una acción está definida en el bloque de acción de la etapa (en el recuadro lateral del diagrama), se puede asignar un <strong>calificador</strong> que controla su comportamiento. Los más usados son:</p>
+<table>
+<thead>
+<tr>
+<th>Calificador</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>N</code></td>
+<td><strong>Non-stored</strong>: la variable es TRUE solo mientras la etapa esté activa. Se pone a FALSE automáticamente al salir.</td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td><strong>Set</strong>: la variable se pone a TRUE al activarse la etapa y <strong>permanece</strong> TRUE aunque la etapa se desactive.</td>
+</tr>
+<tr>
+<td><code>R</code></td>
+<td><strong>Reset</strong>: pone la variable a FALSE al desactivarese la etapa.</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td><strong>Pulse</strong>: ejecuta la acción durante un solo ciclo al activarse la etapa.</td>
+</tr>
+<tr>
+<td><code>L</code></td>
+<td><strong>Limited</strong>: ejecuta la acción durante un tiempo máximo <code>t</code>.</td>
+</tr>
+<tr>
+<td><code>D</code></td>
+<td><strong>Delayed</strong>: comienza a ejecutar la acción tras un retardo <code>t</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Actions" src="/docs/img/actions.png" /></p>
+<h3 id="ramificaciones-alternativas-y-paralelas">Ramificaciones: alternativas y paralelas</h3>
+<h4 id="ramificacion-alternativa-alternative-branch">Ramificación alternativa (Alternative Branch)</h4>
+<p>Se usa cuando el flujo puede seguir <strong>uno de varios caminos posibles</strong>, dependiendo de qué condición se cumple primero. Solo se ejecuta <strong>una</strong> de las ramas.</p>
+<ul>
+<li>Se representa con una <strong>línea simple horizontal</strong> que separa los caminos.</li>
+<li>TwinCAT evalúa las transiciones de izquierda a derecha; la primera que sea <code>TRUE</code> es la que se toma.</li>
+</ul>
+<p>Para insertar una ramificación alternativa:
+1. Selecciona la etapa antes de la bifurcación.
+2. Menú SFC → <strong>Insert alternative branch</strong>.</p>
+<pre><code>        ┌──────┐
+        │ Step │
+        └──┬───┘
+     ──────┼──────   ← línea simple: ramificación alternativa
+     │           │
+  [cond A]    [cond B]
+     │           │
+  ┌──┴───┐  ┌───┴──┐
+  │Step A│  │Step B│
+  └──────┘  └──────┘
+</code></pre>
+<h5 id="ramificacion-paralela-parallel-branch">Ramificación paralela (Parallel Branch)</h5>
+<p>Se usa cuando múltiples secuencias deben ejecutarse <strong>simultáneamente</strong>. Todas las ramas se activan a la vez y el flujo solo continúa cuando <strong>todas</strong> han completado su última etapa activa.</p>
+<ul>
+<li>Se representa con una <strong>doble línea horizontal</strong>.</li>
+</ul>
+<p>Para insertar una ramificación paralela:
+1. Selecciona la etapa antes de la bifurcación.
+2. Menú SFC → <strong>Insert parallel branch</strong>.</p>
+<pre><code>        ┌──────┐
+        │ Step │
+        └──┬───┘
+    ════════════════   ← doble línea: ramificación paralela
+     │           │
+  ┌──┴───┐  ┌───┴──┐
+  │Step A│  │Step B│  ← ambas ramas activas simultáneamente
+  └──────┘  └──────┘
+    ════════════════   ← sincronización: se espera a que ambas terminen
+         │
+      [trans]
+</code></pre>
+<h3 id="variables-de-control-del-sfc-sfc-flags">Variables de control del SFC (SFC Flags)</h3>
+<p>TwinCAT proporciona una serie de <strong>variables especiales</strong> que permiten controlar y monitorizar el comportamiento del diagrama SFC desde fuera o desde otras partes del programa. Para usarlas, deben declararse con el nombre exacto en la zona de declaración del POU.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SFCInit</code></td>
+<td>BOOL</td>
+<td>Cuando es <code>TRUE</code>, reinicia el SFC a la etapa inicial (Init). El SFC no ejecuta código mientras permanezca a <code>TRUE</code>.</td>
+</tr>
+<tr>
+<td><code>SFCReset</code></td>
+<td>BOOL</td>
+<td>Similar a <code>SFCInit</code>, pero además ejecuta las acciones de salida antes de reiniciar.</td>
+</tr>
+<tr>
+<td><code>SFCError</code></td>
+<td>BOOL</td>
+<td>Se pone a <code>TRUE</code> cuando alguna etapa supera su tiempo máximo configurado (timeout).</td>
+</tr>
+<tr>
+<td><code>SFCErrorStep</code></td>
+<td>STRING</td>
+<td>Nombre de la etapa que causó el timeout.</td>
+</tr>
+<tr>
+<td><code>SFCCurrentStep</code></td>
+<td>STRING</td>
+<td>Nombre de la etapa actualmente activa (útil para diagnóstico).</td>
+</tr>
+<tr>
+<td><code>SFCTrans</code></td>
+<td>BOOL</td>
+<td>Se pone a <code>TRUE</code> cuando se produce una transición.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ejemplo-de-uso-de-sfcinit-para-reset">Ejemplo de uso de SFCInit para reset</h3>
+<pre><code class="language-pascal">(* En el programa MAIN, podemos reiniciar el semáforo así: *)
+IF GVL_IO.bReset THEN
+    instSemaforo.SFCInit := TRUE;
+ELSE
+    instSemaforo.SFCInit := FALSE;
+END_IF
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../sfc/" class="btn btn-neutral float-left" title="Qué es el SFC"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ejemplo/" class="btn btn-neutral float-right" title="Ejemplo práctico">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../sfc/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ejemplo/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Compilación, descarga y modo Online - MkLorum</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Compilaci\u00f3n, descarga y modo Online";
+        var mkdocs_page_input_path = "compilacion.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> MkLorum
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../instalacion/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../estandar/">Estándar IEC 61131-3</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../sfc/">Qué es el SFC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../twincat0/">Creación de un proyecto en TwinCAT3</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ejemplo/">Ejemplo práctico</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Compilación, descarga y modo Online</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#compilar-el-proyecto">Compilar el proyecto</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#seleccionar-el-dispositivo-objetivo">Seleccionar el dispositivo objetivo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#activar-la-configuracion-y-arrancar-el-runtime">Activar la configuración y arrancar el runtime</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conectarse-al-plc-login">Conectarse al PLC (Login)</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../online/">Depuración en modo Online</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../errores/">Buenas prácticas y errores comunes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ejercicios/">Ejercicios propuestos</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../referencias/">Referencias y recursos adicionales</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../atajos/">Anexo A — Resumen de atajos de teclado en TwinCAT XAE</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../estructura/">Anexo B — Estructura mínima de un proyecto SFC en TwinCAT 3</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">MkLorum</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Compilación, descarga y modo Online</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="compilacion-descarga-y-modo-online">Compilación, descarga y modo Online</h2>
+<h3 id="compilar-el-proyecto">Compilar el proyecto</h3>
+<ol>
+<li>Ve a <strong>Build → Build Solution</strong> (o pulsa <code>Ctrl + Shift + B</code>).</li>
+<li>Comprueba el panel <strong>Error List</strong> en la parte inferior. Si hay errores, corrígelos antes de continuar.</li>
+<li>Si la compilación es correcta, aparecerá el mensaje <code>Build succeeded</code>.</li>
+</ol>
+<h3 id="seleccionar-el-dispositivo-objetivo">Seleccionar el dispositivo objetivo</h3>
+<p>Para ejecutar en el propio PC (sin hardware externo):</p>
+<ol>
+<li>En la barra de herramientas de TwinCAT XAE, despliega el selector <strong>Choose Target System</strong>.</li>
+<li>Selecciona <code>&lt;Local&gt;</code> para cargar el código en el runtime local.</li>
+</ol>
+<p><img alt="Compilación" src="/docs/img/compilacion.png" /></p>
+<h3 id="activar-la-configuracion-y-arrancar-el-runtime">Activar la configuración y arrancar el runtime</h3>
+<ol>
+<li>Haz clic en <strong>Activate Configuration</strong> (icono de engranaje con flecha) o ve a <strong>TwinCAT → Activate Configuration</strong>.</li>
+<li>Aparecerá un diálogo preguntando si deseas activar la configuración → <strong>Yes</strong>.</li>
+<li>Otro diálogo preguntará si deseas reiniciar TwinCAT en Run Mode → <strong>Yes</strong>.</li>
+<li>El icono de TwinCAT en la barra de tareas cambiará a <strong>verde</strong> (Run Mode).</li>
+</ol>
+<blockquote>
+<p>⚠️ En el caso de que al activar la configuración, TwinCAT informe que no es posible su activación debido al uso de la máquina virtual Hyper-V, es posible solucionar este problema de la siguiente manera. Primero es importante entender que aunque estemos utilizando TwinCAT en nuesto sistema operativo global, windows depende de Hyper-V para la correcta ejecución del Windows Subsystem for Linux (WSL) y Docker. Debemos por tanto anular la ejecución en segundo plano de Hyper-V. Para ello, abriremos PowerShell como administrador y ejectuaremos la siguiente línea de código:</p>
+<p><code>bcdedit /set hypervisorlaunchtype off</code> </p>
+<p>Una vez desactivada Hyper-V, debemos reiniciar nuestro ordenador y el problema debería haber sido solucionado. 
+Para reactivar Hyper-V (en caso de que se necesite para usar WSL o Docker), ejecutaremos de la misma manera:</p>
+<p><code>bcdedit /set hypervisorlaunchtype auto</code></p>
+</blockquote>
+<h3 id="conectarse-al-plc-login">Conectarse al PLC (Login)</h3>
+<ol>
+<li>En el Solution Explorer, expande el proyecto PLC y haz doble clic en el programa <strong>MAIN</strong>.</li>
+<li>Ve a <strong>PLC → Login</strong> (o <code>Alt + F8</code>). Se solicitará descargar el programa si hay cambios.</li>
+<li>Confirma la descarga.</li>
+<li>Una vez conectado, arranca la ejecución con <strong>PLC → Start</strong> (<code>F5</code>).</li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ejemplo/" class="btn btn-neutral float-left" title="Ejemplo práctico"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../online/" class="btn btn-neutral float-right" title="Depuración en modo Online">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../ejemplo/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../online/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

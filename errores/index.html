@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Buenas prácticas y errores comunes - MkLorum</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Buenas pr\u00e1cticas y errores comunes";
+        var mkdocs_page_input_path = "errores.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> MkLorum
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../instalacion/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../estandar/">Estándar IEC 61131-3</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../sfc/">Qué es el SFC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../twincat0/">Creación de un proyecto en TwinCAT3</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ejemplo/">Ejemplo práctico</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../compilacion/">Compilación, descarga y modo Online</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../online/">Depuración en modo Online</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Buenas prácticas y errores comunes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#buenas-practicas">✅ Buenas prácticas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#errores-comunes">❌ Errores comunes</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ejercicios/">Ejercicios propuestos</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../referencias/">Referencias y recursos adicionales</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../atajos/">Anexo A — Resumen de atajos de teclado en TwinCAT XAE</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../estructura/">Anexo B — Estructura mínima de un proyecto SFC en TwinCAT 3</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">MkLorum</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Buenas prácticas y errores comunes</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="buenas-practicas-y-errores-comunes">Buenas prácticas y errores comunes</h2>
+<h3 id="buenas-practicas">✅ Buenas prácticas</h3>
+<ul>
+<li><strong>Nombra las etapas y transiciones de forma descriptiva</strong>: <code>Step_Rojo</code>, <code>Trans_FinTemporizador</code> en lugar de <code>Step0</code>, <code>Trans0</code>.</li>
+<li><strong>Usa Entry Actions para inicializar</strong> salidas y temporizadores al entrar en una etapa, en lugar de Step Actions. Así evitas que el código de inicialización se ejecute en cada ciclo.</li>
+<li><strong>Siempre inicializa los temporizadores</strong>: llama al bloque <code>TON</code> primero con <code>IN := FALSE</code> y luego con <code>IN := TRUE</code> en la Entry Action para asegurarte de que el temporizador arranque limpio.</li>
+<li><strong>Incluye siempre una lógica de reset</strong> usando <code>SFCInit</code> o <code>SFCReset</code> para poder recuperar el sistema ante fallos.</li>
+<li><strong>Documenta cada etapa y transición</strong> con comentarios breves que expliquen qué ocurre y qué condición se espera.</li>
+<li><strong>Evita las transiciones <code>TRUE</code> en bucles cerrados</strong> sin ninguna etapa intermedia, ya que pueden causar que el ciclo se ejecute completamente en un único scan y el comportamiento sea impredecible.</li>
+</ul>
+<h3 id="errores-comunes">❌ Errores comunes</h3>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Causa habitual</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>La etapa nunca avanza</td>
+<td>La condición de transición nunca es <code>TRUE</code></td>
+<td>Revisa la expresión booleana; usa Watch para ver el valor de las variables</td>
+</tr>
+<tr>
+<td>El temporizador no funciona</td>
+<td>El bloque <code>TON</code> no se llama cíclicamente</td>
+<td>Asegúrate de que la llamada a <code>TON</code> está en una Step Action (no solo en Entry) o llámalo también desde MAIN</td>
+</tr>
+<tr>
+<td>El SFC se queda en Init</td>
+<td>La señal <code>bStart</code> nunca es <code>TRUE</code></td>
+<td>Fuerza la variable en modo Online para verificar</td>
+</tr>
+<tr>
+<td>Todas las luces están encendidas a la vez</td>
+<td>Las salidas no se apagan al cambiar de etapa</td>
+<td>Asegúrate de apagar explícitamente las salidas en la Entry Action de cada etapa</td>
+</tr>
+<tr>
+<td>Error de compilación: "variable no declarada"</td>
+<td>Falta declarar una variable de flag SFC</td>
+<td>Declara <code>SFCInit</code>, <code>SFCError</code>, etc. en la zona VAR del POU</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../online/" class="btn btn-neutral float-left" title="Depuración en modo Online"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ejercicios/" class="btn btn-neutral float-right" title="Ejercicios propuestos">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../online/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ejercicios/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

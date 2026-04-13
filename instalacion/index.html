@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Instalación - MkLorum</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Instalaci\u00f3n";
+        var mkdocs_page_input_path = "instalacion.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> MkLorum
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introducción</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Instalación</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#requisitos-del-sistema">Requisitos del sistema</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#descarga-e-instalacion">Descarga e instalación</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#modos-de-twincat">Modos de TwinCAT</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../estandar/">Estándar IEC 61131-3</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../sfc/">Qué es el SFC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../twincat0/">Creación de un proyecto en TwinCAT3</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ejemplo/">Ejemplo práctico</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../compilacion/">Compilación, descarga y modo Online</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../online/">Depuración en modo Online</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../errores/">Buenas prácticas y errores comunes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ejercicios/">Ejercicios propuestos</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../referencias/">Referencias y recursos adicionales</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../atajos/">Anexo A — Resumen de atajos de teclado en TwinCAT XAE</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../estructura/">Anexo B — Estructura mínima de un proyecto SFC en TwinCAT 3</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">MkLorum</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Instalación</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="instalacion-y-entorno-de-trabajo">Instalación y entorno de trabajo</h2>
+<h3 id="requisitos-del-sistema">Requisitos del sistema</h3>
+<ul>
+<li>Sistema operativo: Windows 10 / Windows 11 (64 bits)</li>
+<li>Microsoft Visual Studio 2019 o 2022 (Community, Professional o Enterprise) <strong>o</strong> la shell de Visual Studio incluida en el instalador de TwinCAT</li>
+<li>Al menos 4 GB de RAM (8 GB recomendado)</li>
+<li>Conexión a internet para la descarga</li>
+</ul>
+<h3 id="descarga-e-instalacion">Descarga e instalación</h3>
+<ol>
+<li>Accede a <a href="https://www.beckhoff.com">https://www.beckhoff.com</a> → sección <strong>Download</strong> → <strong>TwinCAT 3</strong>.</li>
+<li>Descarga el instalador <strong>TC31-Full-Setup</strong> (versión más reciente estable).</li>
+<li>Ejecuta el instalador con permisos de administrador y sigue el asistente. El propio instalador detecta si tienes Visual Studio y se integra automáticamente.</li>
+<li>Al finalizar, reinicia el equipo. En la barra de tareas de Windows aparecerá el icono de TwinCAT (un engranaje azul/verde).</li>
+</ol>
+<p><img alt="TwinCAT Interface" src="/docs/img/twinCAT_windows_tasksbar.png" /></p>
+<h3 id="modos-de-twincat">Modos de TwinCAT</h3>
+<p>TwinCAT opera en dos modos que se indican mediante el color del icono tanto en la barra de tareas inferior de Windows como en la barra de herramientas superior en TwinCAT :</p>
+<ul>
+<li>🔵 <strong>Config Mode</strong> (azul): el runtime está detenido. Es el modo de edición y configuración.</li>
+<li>🟢 <strong>Run Mode</strong> (verde): el runtime está en ejecución. El programa PLC se está ejecutando.</li>
+</ul>
+<p>Para cambiar de modo, haz clic derecho sobre el icono de TwinCAT en la barra de tareas de Windows y selecciona la opción deseada o bien haz clic directamente en el icono deseado en la barra de herramientas de TwinCAT. </p>
+<p><img alt="Modes" src="/docs/img/twinCAT_modes.png" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Introducción"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../estandar/" class="btn btn-neutral float-right" title="Estándar IEC 61131-3">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../estandar/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
