@@ -1,0 +1,22 @@
+site_name: MkLorum
+nav:
+  - Introducción: index.md
+  - Instalación: instalacion.md
+  - Estándar IEC 61131-3: estandar.md
+  - Qué es el SFC: sfc.md
+  - Creación de un proyecto en TwinCAT3: twincat0.md
+  - Ejemplo práctico: ejemplo.md
+  - Compilación, descarga y modo Online: compilacion.md
+  - Depuración en modo Online: online.md
+  - Buenas prácticas y errores comunes: errores.md
+  - Ejercicios propuestos: ejercicios.md
+  - Referencias y recursos adicionales: referencias.md
+  - Anexo A — Resumen de atajos de teclado en TwinCAT XAE: atajos.md
+  - Anexo B — Estructura mínima de un proyecto SFC en TwinCAT 3: estructura.md
+
+theme: 
+  name: readthedocs
+  highlightjs: true
+  locale: es
+markdown_extensions:
+  - admonition
