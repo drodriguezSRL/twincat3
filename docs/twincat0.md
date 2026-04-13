@@ -8,7 +8,8 @@
 4. Asigna un nombre descriptivo al proyecto (p. ej. `PLC_SFC_Semaforo`) y elige la carpeta de destino.
 5. Haz clic en **OK/Create**.
 
-![TwinCAT Nuevo Proyecto](/docs/img/twinCAT_newproject.png)
+![TwinCAT Nuevo Proyecto](./img/twinCAT_newproject.png)
+*Ventana de creación de un proyecto nuevo*
 
 ### Estructura del proyecto
 
@@ -43,7 +44,7 @@ Se creará automáticamente la estructura del proyecto PLC:
 └── 📁 TASK CONFIGURATION ← Configuración de tareas
 ```
 
-![Solution Explorer](/docs/img/solution_explorer.png)
+![Solution Explorer](./img/solution_explorer.png)
 
 ### Declarar variables globales (GVL)
 
@@ -77,9 +78,9 @@ END_VAR
    - **Implementation language**: `Sequential Function Chart (SFC)`
 3. Haz clic en **Open**.
 
-![POU](/docs/img/pou.png)
+![POU](./img/pou.png)
 
-![New SFC POU](/docs/img/new_POU.png)
+![New SFC POU](./img/new_POU.png)
 
 TwinCAT creará el POU y abrirá el **editor SFC** mostrando una estructura inicial con:
 
@@ -96,7 +97,8 @@ El editor SFC en TwinCAT se divide en dos zonas:
 
 En la barra de menús aparece el menú contextual **SFC** con todas las operaciones de inserción y modificación de elementos.
 
-![Editor POU](/docs/img/editor.png)
+![Editor POU](./img/editor.png)
+*Editor SFC en TwinCAT con las dos zonas principales (declaración de variables e implementación)*
 
 #### Declarar variables locales del progama
 
@@ -129,7 +131,7 @@ Para añadir elementos al diagrama SFC, selecciona un elemento existente y usa e
 - **Insert step-transition before**: añade antes.
 - También puedes arrastrar elementos desde el panel **Toolbox**.
 
-![Toolbox SFC](/docs/img/toolbox.png)
+![Toolbox SFC](./img/toolbox.png)
 
 #### Renombrar pasos y transiciones
 
@@ -219,7 +221,7 @@ Cuando una acción está definida en el bloque de acción de la etapa (en el rec
 | `L` | **Limited**: ejecuta la acción durante un tiempo máximo `t`. |
 | `D` | **Delayed**: comienza a ejecutar la acción tras un retardo `t`. |
 
-![Actions](/docs/img/actions.png)
+![Actions](./img/actions.png)
 
 ### Ramificaciones: alternativas y paralelas
 

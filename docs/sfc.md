@@ -40,7 +40,7 @@ Representa un **estado estable** del sistema. En cada instante, una o varias eta
 - La **etapa inicial** se representa con **doble borde** y es la que está activa al arrancar el programa.
 - Una etapa puede tener acciones asociadas que se ejecutan mientras dicha etapa está activa.
 
-![Etapa inicial y transiciones](/docs/img/etapa_inicial.png)
+![Etapa inicial y transiciones](./img/etapa_inicial.png)
 
 #### Transición (Transition)
 

@@ -14,7 +14,8 @@
 3. Ejecuta el instalador con permisos de administrador y sigue el asistente. El propio instalador detecta si tienes Visual Studio y se integra automáticamente.
 4. Al finalizar, reinicia el equipo. En la barra de tareas de Windows aparecerá el icono de TwinCAT (un engranaje azul/verde).
 
-![TwinCAT Interface](/docs/img/twinCAT_windows_tasksbar.png)
+![TwinCAT Interface](./img/twinCAT_windows_tasksbar.png)
+*Icono de TwinCAT en modo configuración en la barra de tareas de Windows*  
 
 ### Modos de TwinCAT
 
@@ -25,4 +26,5 @@ TwinCAT opera en dos modos que se indican mediante el color del icono tanto en l
 
 Para cambiar de modo, haz clic derecho sobre el icono de TwinCAT en la barra de tareas de Windows y selecciona la opción deseada o bien haz clic directamente en el icono deseado en la barra de herramientas de TwinCAT. 
 
-![Modes](/docs/img/twinCAT_modes.png)
+![Modes](./img/twinCAT_modes.png)
+*Modos de TwinCAT*

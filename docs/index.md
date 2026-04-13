@@ -19,6 +19,7 @@
 
 
 >💡 _El estándar **IEC 61131-3** es la parte 3 de la norma internacional IEC 61131, dedicada específicamente a los lenguajes de programación para autómatas programables (PLCs), con el objetivo principal de que un ingeniero pueda programar PLCs de distintos frabricantes con los mismos conceptos y lenguajes, reduciendo la curva de aprendizaje y facilitando el mantenimiento del código industrial. En esencia, establece:_  
+>  
 > - _Cinco lenguajes de programación estandarizados (LD, FBD, ST, IL y SFC) que cualquier fabricante de PLCs puede implementar, garantizando portabilidad y uniformidad._  
 > - _Los tipos de datos básicos y compuestos que deben estar disponibles (BOOL, INT, REAL, TIME, STRING, arrays, structs…)._  
 > - _Los tipos de POUs o "program organization units" (Program, Function Block, Function) y cómo se organizan y comunican entre sí._  
@@ -34,4 +35,5 @@
 | **TwinCAT PLC** | Módulo de programación PLC dentro del XAE. |
 | **I/O** | Módulo de configuración de hardware y mapeo de variables. |
 
-![TwinCAT Interface](/img/twinCAT_interface.png)
+![TwinCAT Interface](./img/twinCAT_interface.png)
+*Interfaz básica de TwinCAT3*
