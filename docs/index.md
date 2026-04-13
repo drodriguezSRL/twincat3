@@ -1,6 +1,6 @@
 # Introducción a TwinCAT3 con SFC
 
-> **Creado por:** David Rodríguez Martínez y Claude AI  
+> **Creado por:** David Rodríguez Martínez  
 > **Asignatura:** Automatización Industrial  
 > **Nivel:** Grado Universitario  
 > **Herramienta:** Beckhoff TwinCAT 3 (XAE)  
@@ -34,4 +34,4 @@
 | **TwinCAT PLC** | Módulo de programación PLC dentro del XAE. |
 | **I/O** | Módulo de configuración de hardware y mapeo de variables. |
 
-![TwinCAT Interface](/docs/img/twinCAT_interface.png)
+![TwinCAT Interface](/img/twinCAT_interface.png)
