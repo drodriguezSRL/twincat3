@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Ejercicios propuestos - MkLorum</title>
+    <title>Ejercicios - MkLorum</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Ejercicios propuestos";
+        var mkdocs_page_name = "Ejercicios";
         var mkdocs_page_input_path = "ejercicios.md";
         var mkdocs_page_url = null;
       </script>
@@ -60,10 +60,6 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../ejemplo/">Ejemplo práctico</a>
-                </li>
-              </ul>
-              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../compilacion/">Compilación, descarga y modo Online</a>
                 </li>
               </ul>
@@ -73,20 +69,6 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../errores/">Buenas prácticas y errores comunes</a>
-                </li>
-              </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Ejercicios propuestos</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#ejercicio-1-semaforo-con-modo-nocturno">Ejercicio 1 — Semáforo con modo nocturno ⭐</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ejercicio-2-control-de-una-cinta-transportadora">Ejercicio 2 — Control de una cinta transportadora ⭐⭐</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ejercicio-3-llenado-de-deposito">Ejercicio 3 — Llenado de depósito ⭐⭐</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ejercicio-4-control-paralelo-de-dos-cintas">Ejercicio 4 — Control paralelo de dos cintas ⭐⭐⭐</a>
-    </li>
-    </ul>
                 </li>
               </ul>
               <ul>
@@ -115,7 +97,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Ejercicios propuestos</li>
+      <li class="breadcrumb-item active">Ejercicios</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -128,25 +110,25 @@
 <h3 id="ejercicio-1-semaforo-con-modo-nocturno">Ejercicio 1 — Semáforo con modo nocturno ⭐</h3>
 <p>Amplía el semáforo del ejemplo con un modo nocturno: cuando la entrada <code>bNoche</code> sea <code>TRUE</code>, el semáforo debe parpadear únicamente la luz ámbar cada segundo, ignorando el ciclo normal. Usa una <strong>ramificación alternativa</strong> para seleccionar entre el modo diurno y nocturno.</p>
 <h3 id="ejercicio-2-control-de-una-cinta-transportadora">Ejercicio 2 — Control de una cinta transportadora ⭐⭐</h3>
-<p>Diseña un SFC que controle una cinta transportadora con las siguientes especificaciones:
-- Al pulsar <code>bStart</code>, la cinta (<code>bMotor</code>) arranca.
-- Un sensor de presencia (<code>bSensorFin</code>) detecta cuando una pieza llega al final.
-- Al detectar la pieza, la cinta se detiene 3 segundos, luego un pistón (<code>bPiston</code>) avanza, espera 2 segundos, retrocede y la cinta vuelve a arrancar.
-- Un pulsador de emergencia <code>bStop</code> detiene todo inmediatamente y reinicia la secuencia.</p>
+<p>Diseña un SFC que controle una cinta transportadora con las siguientes especificaciones:</p>
+<ul>
+<li>Al pulsar <code>bStart</code>, la cinta (<code>bMotor</code>) arranca.  </li>
+<li>Un sensor de presencia (<code>bSensorFin</code>) detecta cuando una pieza llega al final.  </li>
+<li>Al detectar la pieza, la cinta se detiene 3 segundos, luego un pistón (<code>bPiston</code>) avanza, espera 2 segundos, retrocede y la cinta vuelve a arrancar.  </li>
+<li>Un pulsador de emergencia <code>bStop</code> detiene todo inmediatamente y reinicia la secuencia.  </li>
+</ul>
 <h3 id="ejercicio-3-llenado-de-deposito">Ejercicio 3 — Llenado de depósito ⭐⭐</h3>
-<p>Programa el control de llenado de un depósito con:
-- Electroválvula de entrada (<code>bValvulaEntrada</code>) y de salida (<code>bValvulaSalida</code>).
-- Sensor de nivel bajo (<code>bNivelBajo</code>) y nivel alto (<code>bNivelAlto</code>).
-- La secuencia: abrir válvula de entrada → esperar nivel alto → cerrar entrada → abrir salida → esperar nivel bajo → cerrar salida → repetir.</p>
+<p>Programa el control de llenado de un depósito con:</p>
+<ul>
+<li>Electroválvula de entrada (<code>bValvulaEntrada</code>) y de salida (<code>bValvulaSalida</code>).  </li>
+<li>Sensor de nivel bajo (<code>bNivelBajo</code>) y nivel alto (<code>bNivelAlto</code>).  </li>
+<li>La secuencia: abrir válvula de entrada → esperar nivel alto → cerrar entrada → abrir salida → esperar nivel bajo → cerrar salida → repetir.  </li>
+</ul>
 <h3 id="ejercicio-4-control-paralelo-de-dos-cintas">Ejercicio 4 — Control paralelo de dos cintas ⭐⭐⭐</h3>
 <p>Diseña un SFC con <strong>ramificación paralela</strong> que controle dos cintas transportadoras independientes que deben sincronizarse al final: la línea principal no puede continuar hasta que ambas cintas hayan procesado su pieza correspondiente.</p>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../errores/" class="btn btn-neutral float-left" title="Buenas prácticas y errores comunes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../referencias/" class="btn btn-neutral float-right" title="Referencias y recursos adicionales">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -168,10 +150,6 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../errores/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../referencias/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

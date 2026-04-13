@@ -86,6 +86,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#crear-un-bucle-de-retorno-jump">Crear un bucle de retorno (Jump)</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#programar-temporizadores">Programar temporizadores</a>
+    </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#acciones-tipos-y-calificadores">Acciones: tipos y calificadores</a>
@@ -114,10 +116,6 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../ejemplo/">Ejemplo práctico</a>
-                </li>
-              </ul>
-              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../compilacion/">Compilación, descarga y modo Online</a>
                 </li>
               </ul>
@@ -127,10 +125,6 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../errores/">Buenas prácticas y errores comunes</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../ejercicios/">Ejercicios propuestos</a>
                 </li>
               </ul>
               <ul>
@@ -177,7 +171,8 @@
 <li>Asigna un nombre descriptivo al proyecto (p. ej. <code>PLC_SFC_Semaforo</code>) y elige la carpeta de destino.</li>
 <li>Haz clic en <strong>OK/Create</strong>.</li>
 </ol>
-<p><img alt="TwinCAT Nuevo Proyecto" src="/docs/img/twinCAT_newproject.png" /></p>
+<p><img alt="TwinCAT Nuevo Proyecto" src="../img/twinCAT_newproject.png" />
+<em>Ventana de creación de un proyecto nuevo</em></p>
 <h3 id="estructura-del-proyecto">Estructura del proyecto</h3>
 <p>Tras crearlo, el <strong>Solution Explorer</strong> mostrará la siguiente estructura:</p>
 <pre><code>📁 Solución
@@ -192,7 +187,7 @@
 <ol>
 <li>En el Solution Explorer, haz clic derecho sobre <strong>PLC</strong> → <strong>Add New Item…</strong></li>
 <li>Selecciona la plantilla <strong>Standard PLC Project</strong>.</li>
-<li>Ponle un nombre (p. ej. <code>PLC_Semaforo</code>) y haz clic en <strong>Add</strong>.</li>
+<li>Ponle un nombre (e.g., <code>PLC_Semaforo</code>) y haz clic en <strong>Add</strong>.</li>
 </ol>
 <p>Se creará automáticamente la estructura del proyecto PLC:</p>
 <pre><code>📁 PLC_Semaforo
@@ -204,7 +199,7 @@
 ├── 📁 VISUs              ← Visualizaciones HMI
 └── 📁 TASK CONFIGURATION ← Configuración de tareas
 </code></pre>
-<p><img alt="Solution Explorer" src="/docs/img/solution_explorer.png" /></p>
+<p><img alt="Solution Explorer" src="../img/solution_explorer.png" /></p>
 <h3 id="declarar-variables-globales-gvl">Declarar variables globales (GVL)</h3>
 <p>Las <strong>GVLs</strong> (Global Variable Lists) permiten declarar variables accesibles desde cualquier POU del proyecto. Para nuestro ejemplo de semáforo crearemos una GVL con las salidas:</p>
 <ol>
@@ -228,13 +223,13 @@ END_VAR
 <ol>
 <li>Clic derecho sobre la carpeta <strong>POUs</strong> → <strong>Add</strong> → <strong>POU…</strong></li>
 <li>En el diálogo:</li>
-<li><strong>Name</strong>: <code>FB_Semaforo</code></li>
+<li><strong>Name</strong>: <code>MAIN</code></li>
 <li><strong>Type</strong>: <code>Program</code></li>
 <li><strong>Implementation language</strong>: <code>Sequential Function Chart (SFC)</code></li>
 <li>Haz clic en <strong>Open</strong>.</li>
 </ol>
-<p><img alt="POU" src="/docs/img/pou.png" /></p>
-<p><img alt="New SFC POU" src="/docs/img/new_POU.png" /></p>
+<p><img alt="POU" src="../img/pou.png" /></p>
+<p><img alt="New SFC POU" src="../img/new_POU.png" /></p>
 <p>TwinCAT creará el POU y abrirá el <strong>editor SFC</strong> mostrando una estructura inicial con:</p>
 <ul>
 <li>La etapa inicial <strong>Init</strong> (con doble borde).</li>
@@ -248,10 +243,11 @@ END_VAR
 <li><strong>Zona inferior (Implementation)</strong>: el diagrama SFC propiamente dicho.</li>
 </ul>
 <p>En la barra de menús aparece el menú contextual <strong>SFC</strong> con todas las operaciones de inserción y modificación de elementos.</p>
-<p><img alt="Editor POU" src="/docs/img/editor.png" /></p>
+<p><img alt="Editor POU" src="../img/editor.png" />
+<em>Editor SFC en TwinCAT con las dos zonas principales (declaración de variables e implementación)</em></p>
 <h4 id="declarar-variables-locales-del-progama">Declarar variables locales del progama</h4>
-<p>En la zona de declaración del <code>FB_Semaforo</code>, añade las variables que necesitarás:</p>
-<pre><code class="language-pascal">FUNCTION_BLOCK FB_Semaforo
+<p>En la zona de declaración del <code>P_Semaforo</code>, añade las variables que necesitarás:</p>
+<pre><code class="language-pascal">PROGRAM MAIN
 VAR
     // entradas
     bStart   : BOOL;   // Señal de inicio
@@ -274,7 +270,7 @@ END_VAR
 <li><strong>Insert step-transition before</strong>: añade antes.</li>
 <li>También puedes arrastrar elementos desde el panel <strong>Toolbox</strong>.</li>
 </ul>
-<p><img alt="Toolbox SFC" src="/docs/img/toolbox.png" /></p>
+<p><img alt="Toolbox SFC" src="../img/toolbox.png" /></p>
 <h4 id="renombrar-pasos-y-transiciones">Renombrar pasos y transiciones</h4>
 <p>Haz doble clic sobre el nombre de una etapa o transición para editarlo. Es importante usar nombres descriptivos:</p>
 <table>
@@ -333,6 +329,39 @@ bStart AND NOT bReset
 <li>En el menú SFC, selecciona <strong>Insert jump</strong>.</li>
 <li>Escribe el nombre de la etapa destino (p. ej. <code>Step_Rojo</code>).</li>
 </ol>
+<h4 id="programar-temporizadores">Programar temporizadores</h4>
+<p>Existen dos maneras de programar temporizadores en TwinCAT3 </p>
+<p><strong>Opción A: implementación directa basada en variable interna de la etapa</strong>  </p>
+<p>En nuestro ejemplo del semáforo podremos usar la variable interna de tiempo de activación de la etapa <code>t</code> para mantener el semáforo en rojo durante 5 segundos definiendo en la transición inmediatamente posterior a <code>Step_Rojo</code> como:</p>
+<pre><code>Step_Rojo.t&gt;=T#5s; 
+</code></pre>
+<p><strong>Opción B: utilizando bloques de funciones temporales predefinidos</strong>  </p>
+<p>Una manera un poco más elaborada pero que ofrece mayor versatilidad es mediante la definición de una funcion de bloques temporizadora. Para ello en la cabecera del POU <code>MAIN</code> declararemos una variable <code>semaforoTimer</code> de typo "TON" (timer On-Delay):</p>
+<pre><code>PROGRAM MAIN
+VAR
+    semaforoTimer : TON;
+END_VAR
+</code></pre>
+<p>Los temporizadores se programan con bloques de funciones ya existentes en TwinCAT:</p>
+<ul>
+<li><strong>TON</strong>: Temporizador de retardo a la conexión; cuando la entrada <code>IN</code> es TRUE, espera el tiempo definido en <code>PT</code> antes de que <code>Q</code> se vuelva TRUE.</li>
+<li><strong>TOF</strong>: Temporizador de retardo a la desconexión; <code>Q</code> se mantiene en TRUE durante el tiempo PT después de que la entrada <code>IN</code> pase a FALSE.</li>
+<li><strong>TP</strong> : Temporizador de pulso; pone <code>Q</code> en TRUE durante una duración fija <code>PT</code> desde que la entrada <code>IN</code> pasa a TRUE.</li>
+</ul>
+<p>Estos bloques de funciones están comprendidos por una serie de campos que podemos modificar:
+- <code>**IN**</code>: Condición de entrada que activa el temporizador (BOOL)
+- <code>**PT**</code>: Tiempo preestablecido (e.g., <code>T#5s</code>) (TIME)
+- <code>**ET**</code>: Tiempo transcurrido desde que se activó (TIME)
+- <code>**Q**</code>: Salida que se pone en TRUE cuando <code>ET&gt;=PT</code> (BOOL)</p>
+<p>Además definiremos una acción de entrada a la etapa <code>Step_Rojo</code> donde se activa el temporizador:</p>
+<pre><code>semaforoTimer(IN := TRUE, PT := T#5s);
+</code></pre>
+<p>y una acción de entrada a la etapa <code>Step_Ambar</code> donde se resetea el temporizador:  </p>
+<pre><code>semaforoTimer(IN := FALSE);
+</code></pre>
+<p>Y únicamente quedaría definir la condición de transición entre ambas etapas con:</p>
+<pre><code>semaforoTimer.Q
+</code></pre>
 <h3 id="acciones-tipos-y-calificadores">Acciones: tipos y calificadores</h3>
 <p>Una <strong>acción</strong> es el código que se ejecuta asociado a una etapa. Cada etapa puede tener múltiples acciones. En TwinCAT 3 existen tres tipos de acciones por momento de ejecución:</p>
 <table>
@@ -415,7 +444,7 @@ tTemporizador(IN := TRUE,  PT := T#5S);
 </tr>
 </tbody>
 </table>
-<p><img alt="Actions" src="/docs/img/actions.png" /></p>
+<p><img alt="Actions" src="../img/actions.png" /></p>
 <h3 id="ramificaciones-alternativas-y-paralelas">Ramificaciones: alternativas y paralelas</h3>
 <h4 id="ramificacion-alternativa-alternative-branch">Ramificación alternativa (Alternative Branch)</h4>
 <p>Se usa cuando el flujo puede seguir <strong>uno de varios caminos posibles</strong>, dependiendo de qué condición se cumple primero. Solo se ejecuta <strong>una</strong> de las ramas.</p>
@@ -513,7 +542,7 @@ END_IF
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../sfc/" class="btn btn-neutral float-left" title="Qué es el SFC"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../ejemplo/" class="btn btn-neutral float-right" title="Ejemplo práctico">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../compilacion/" class="btn btn-neutral float-right" title="Compilación, descarga y modo Online">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -539,7 +568,7 @@ END_IF
       <span><a href="../sfc/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../ejemplo/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../compilacion/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

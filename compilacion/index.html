@@ -59,10 +59,6 @@
                 <li class="toctree-l1"><a class="reference internal" href="../twincat0/">Creación de un proyecto en TwinCAT3</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../ejemplo/">Ejemplo práctico</a>
-                </li>
-              </ul>
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Compilación, descarga y modo Online</a>
     <ul class="current">
@@ -83,10 +79,6 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../errores/">Buenas prácticas y errores comunes</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../ejercicios/">Ejercicios propuestos</a>
                 </li>
               </ul>
               <ul>
@@ -137,7 +129,7 @@
 <li>En la barra de herramientas de TwinCAT XAE, despliega el selector <strong>Choose Target System</strong>.</li>
 <li>Selecciona <code>&lt;Local&gt;</code> para cargar el código en el runtime local.</li>
 </ol>
-<p><img alt="Compilación" src="/docs/img/compilacion.png" /></p>
+<p><img alt="Compilación" src="../img/compilacion.png" /></p>
 <h3 id="activar-la-configuracion-y-arrancar-el-runtime">Activar la configuración y arrancar el runtime</h3>
 <ol>
 <li>Haz clic en <strong>Activate Configuration</strong> (icono de engranaje con flecha) o ve a <strong>TwinCAT → Activate Configuration</strong>.</li>
@@ -146,10 +138,10 @@
 <li>El icono de TwinCAT en la barra de tareas cambiará a <strong>verde</strong> (Run Mode).</li>
 </ol>
 <blockquote>
-<p>⚠️ En el caso de que al activar la configuración, TwinCAT informe que no es posible su activación debido al uso de la máquina virtual Hyper-V, es posible solucionar este problema de la siguiente manera. Primero es importante entender que aunque estemos utilizando TwinCAT en nuesto sistema operativo global, windows depende de Hyper-V para la correcta ejecución del Windows Subsystem for Linux (WSL) y Docker. Debemos por tanto anular la ejecución en segundo plano de Hyper-V. Para ello, abriremos PowerShell como administrador y ejectuaremos la siguiente línea de código:</p>
+<p>⚠️ <em>En el caso de que al activar la configuración, TwinCAT informe que no es posible su activación debido al uso de la máquina virtual Hyper-V, es posible solucionar este problema de la siguiente manera. Primero es importante entender que aunque estemos utilizando TwinCAT en nuesto sistema operativo global, windows depende de Hyper-V para la correcta ejecución del Windows Subsystem for Linux (WSL) y Docker. Debemos por tanto anular la ejecución en segundo plano de Hyper-V. Para ello, abriremos PowerShell como administrador y ejectuaremos la siguiente línea de código:</em></p>
 <p><code>bcdedit /set hypervisorlaunchtype off</code> </p>
-<p>Una vez desactivada Hyper-V, debemos reiniciar nuestro ordenador y el problema debería haber sido solucionado. 
-Para reactivar Hyper-V (en caso de que se necesite para usar WSL o Docker), ejecutaremos de la misma manera:</p>
+<p><em>Una vez desactivada Hyper-V, debemos reiniciar nuestro ordenador y el problema debería haber sido solucionado.</em> 
+<em>Para reactivar Hyper-V (en caso de que se necesite para usar WSL o Docker), ejecutaremos de la misma manera:</em></p>
 <p><code>bcdedit /set hypervisorlaunchtype auto</code></p>
 </blockquote>
 <h3 id="conectarse-al-plc-login">Conectarse al PLC (Login)</h3>
@@ -163,7 +155,7 @@ Para reactivar Hyper-V (en caso de que se necesite para usar WSL o Docker), ejec
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../ejemplo/" class="btn btn-neutral float-left" title="Ejemplo práctico"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../twincat0/" class="btn btn-neutral float-left" title="Creación de un proyecto en TwinCAT3"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../online/" class="btn btn-neutral float-right" title="Depuración en modo Online">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -187,7 +179,7 @@ Para reactivar Hyper-V (en caso de que se necesite para usar WSL o Docker), ejec
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../ejemplo/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../twincat0/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../online/" style="color: #fcfcfc">Next &raquo;</a></span>
