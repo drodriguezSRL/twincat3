@@ -29,7 +29,7 @@ Tras crearlo, el **Solution Explorer** mostrará la siguiente estructura:
 
 1. En el Solution Explorer, haz clic derecho sobre **PLC** → **Add New Item…**
 2. Selecciona la plantilla **Standard PLC Project**.
-3. Ponle un nombre (p. ej. `PLC_Semaforo`) y haz clic en **Add**.
+3. Ponle un nombre (e.g., `PLC_Semaforo`) y haz clic en **Add**.
 
 Se creará automáticamente la estructura del proyecto PLC:
 
@@ -73,7 +73,7 @@ END_VAR
 
 1. Clic derecho sobre la carpeta **POUs** → **Add** → **POU…**
 2. En el diálogo:
-   - **Name**: `FB_Semaforo`
+   - **Name**: `MAIN`
    - **Type**: `Program`
    - **Implementation language**: `Sequential Function Chart (SFC)`
 3. Haz clic en **Open**.
@@ -102,10 +102,10 @@ En la barra de menús aparece el menú contextual **SFC** con todas las operacio
 
 #### Declarar variables locales del progama
 
-En la zona de declaración del `FB_Semaforo`, añade las variables que necesitarás:
+En la zona de declaración del `P_Semaforo`, añade las variables que necesitarás:
 
 ```pascal
-FUNCTION_BLOCK FB_Semaforo
+PROGRAM MAIN
 VAR
 	// entradas
 	bStart   : BOOL;   // Señal de inicio
@@ -176,6 +176,59 @@ Para que la secuencia se repita indefinidamente, necesitas un **salto** al final
 3. Escribe el nombre de la etapa destino (p. ej. `Step_Rojo`).
 
 
+#### Programar temporizadores
+
+Existen dos maneras de programar temporizadores en TwinCAT3 
+
+**Opción A: implementación directa basada en variable interna de la etapa**  
+
+En nuestro ejemplo del semáforo podremos usar la variable interna de tiempo de activación de la etapa `t` para mantener el semáforo en rojo durante 5 segundos definiendo en la transición inmediatamente posterior a `Step_Rojo` como:
+
+```
+Step_Rojo.t>=T#5s; 
+```
+
+**Opción B: utilizando bloques de funciones temporales predefinidos**  
+
+Una manera un poco más elaborada pero que ofrece mayor versatilidad es mediante la definición de una funcion de bloques temporizadora. Para ello en la cabecera del POU `MAIN` declararemos una variable `semaforoTimer` de typo "TON" (timer On-Delay):
+
+````
+PROGRAM MAIN
+VAR
+	semaforoTimer : TON;
+END_VAR
+````
+
+Los temporizadores se programan con bloques de funciones ya existentes en TwinCAT:
+
+- **TON**: Temporizador de retardo a la conexión; cuando la entrada `IN` es TRUE, espera el tiempo definido en `PT` antes de que `Q` se vuelva TRUE.
+- **TOF**: Temporizador de retardo a la desconexión; `Q` se mantiene en TRUE durante el tiempo PT después de que la entrada `IN` pase a FALSE.
+- **TP** : Temporizador de pulso; pone `Q` en TRUE durante una duración fija `PT` desde que la entrada `IN` pasa a TRUE.
+
+Estos bloques de funciones están comprendidos por una serie de campos que podemos modificar:
+- `**IN**`: Condición de entrada que activa el temporizador (BOOL)
+- `**PT**`: Tiempo preestablecido (e.g., `T#5s`) (TIME)
+- `**ET**`: Tiempo transcurrido desde que se activó (TIME)
+- `**Q**`: Salida que se pone en TRUE cuando `ET>=PT` (BOOL)
+
+
+Además definiremos una acción de entrada a la etapa `Step_Rojo` donde se activa el temporizador:
+
+```
+semaforoTimer(IN := TRUE, PT := T#5s);
+```
+
+y una acción de entrada a la etapa `Step_Ambar` donde se resetea el temporizador:  
+
+```
+semaforoTimer(IN := FALSE);
+```
+
+Y únicamente quedaría definir la condición de transición entre ambas etapas con:
+
+```
+semaforoTimer.Q
+```
 
 ### Acciones: tipos y calificadores
 
