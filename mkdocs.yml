@@ -1,4 +1,4 @@
-site_name: Into a TwinCAT3
+site_name: Intro a TwinCAT3
 nav:
   - Introducción: index.md
   - Instalación: instalacion.md
