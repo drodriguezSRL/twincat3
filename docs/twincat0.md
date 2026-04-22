@@ -63,9 +63,9 @@ VAR_GLOBAL
 END_VAR
 ```
 
-> 💡 El uso de variables globales no es imprescindible para la realización de las prácticas de la asignatura de Automatización Industrial. Ver uso de variables locales en [Creación de un POU en SFC](#creación-de-un-pou-en-sfc).
+> 💡 _El uso de variables globales no es imprescindible para la realización de las prácticas de la asignatura de Automatización Industrial. Ver uso de variables locales en [Creación de un POU en SFC](#creación-de-un-pou-en-sfc)._
 
-> ℹ️  La principal diferencia entre las **variables globales y locales** radica en su alcance, duración y lugar de declaración, afectando a cómo los datos se comparten entre diferentes bloques de programa o POUs y tareas. Las variables globales definidas dentro de un GVL son visibles y accesibles desde cualquier parte del proyecto, mientras que las variables globales se declaran dentro de un bloque de código específico (POU)  y únivamente son visibles y accesibles desde dentro de ese POU.  
+> ℹ️  _La principal diferencia entre las **variables globales y locales** radica en su alcance, duración y lugar de declaración, afectando a cómo los datos se comparten entre diferentes bloques de programa o POUs y tareas. Las variables globales definidas dentro de un GVL son visibles y accesibles desde cualquier parte del proyecto, mientras que las variables globales se declaran dentro de un bloque de código específico (POU)  y únivamente son visibles y accesibles desde dentro de ese POU._   
 
 ### Creación de un POU en SFC
 

@@ -6,15 +6,19 @@ Cuando el programa está en ejecución y estás conectado al PLC (_login_), el e
 - Si hay varias ramas paralelas, la rama en ejecución se muestra en **rojo**.
 - Junto a cada etapa se puede ver el tiempo que lleva activa (si está configurada la supervisión de tiempo).
 
-> `[CAPTURA SUGERIDA: Editor SFC en modo Online con la etapa activa resaltada en azul, mostrando el tiempo de permanencia junto a la etapa]`
+> ![Etapa activa](./img/etapa_activa.png)
+*La etapa activa se muestra en azul* 
 
 ### Forzar variables (Force / Write)
 
 En modo Online puedes modificar el valor de las variables para probar el comportamiento:
 
 1. Abre la ventana de variables (clic derecho sobre una variable → **Add Watch**) o escribe el nombre en la zona de declaración.
-2. Haz doble clic sobre el valor actual para editarlo.
-3. Pulsa `Ctrl + F7` para **Write** (escribe el valor en la siguiente evaluación del ciclo) o `F7` para **Force** (mantiene el valor forzado incluso si el programa intentara cambiarlo).
+2. Selecciona el valor que deseas para la variable en la columna de **Prepared Value**.
+3. Pulsa `Ctrl + F7` o el botón de **Write** (escribe el valor en la siguiente evaluación del ciclo), o bien `F7` o el boton de **Force** (mantiene el valor forzado incluso si el programa intentara cambiarlo).
+
+> ![Botones de Force y Write](./img/force_write_values.png)
+*Botones de Force, Unforce, y Write* 
 
 ### Puntos de ruptura (Breakpoints)
 
